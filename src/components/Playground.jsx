@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "../lib/gsap";
 import Reveal from "./Reveal";
+import { playground } from "../content";
 
 const EASES = [
   { name: "Power2", value: "power2.inOut" },
@@ -69,15 +70,17 @@ export default function Playground() {
   return (
     <section id="playground" className="border-t border-line px-6 py-24 md:px-12 md:py-36">
       <Reveal>
-        <p className="font-grotesk text-xs uppercase tracking-[0.35em] text-lime">Signature</p>
+        <p className="font-grotesk text-xs uppercase tracking-[0.35em] text-lime">{playground.kicker}</p>
         <h2 className="mt-4 font-display text-6xl uppercase leading-none text-paper md:text-8xl">
-          Easing
-          <br />
-          Playground
+          {playground.titleLines.map((line, i) => (
+            <span key={i}>
+              {i > 0 && <br />}
+              {line}
+            </span>
+          ))}
         </h2>
         <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-          Motion is in the details. Pick a curve — the same math behind every
-          animation on this page — and watch it play.
+          {playground.desc}
         </p>
       </Reveal>
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "../lib/gsap";
+import { preloader } from "../content";
 
 /** Full-screen preloader: counts 0→100, then curtain-lifts. */
 export default function Preloader({ onDone }) {
@@ -43,7 +44,7 @@ export default function Preloader({ onDone }) {
     >
       <div className="overflow-hidden">
         <p className="preloader-word font-grotesk text-sm tracking-[0.3em] text-muted">
-          PORTFOLIO © 2026
+          {preloader.mark}
         </p>
       </div>
       <div className="flex items-end justify-between">
