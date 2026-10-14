@@ -1,4 +1,6 @@
 /** Infinite availability ticker. */
+import { marquee } from "../content";
+
 export default function Marquee() {
   const items = Array.from({ length: 8 });
   return (
@@ -7,7 +9,7 @@ export default function Marquee() {
         {items.map((_, i) => (
           <span key={i} className="flex items-center gap-8" aria-hidden={i > 0}>
             <span className="font-grotesk text-sm font-bold uppercase tracking-[0.3em] text-paper">
-              Available for freelance & fulltime
+              {marquee.text}
             </span>
             <span className="text-xl text-lime">✦</span>
           </span>

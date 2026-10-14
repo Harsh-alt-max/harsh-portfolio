@@ -1,34 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "../lib/gsap";
 import Reveal from "./Reveal";
+import { work } from "../content";
 
-const portfolioCover = "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/08dfbe231756993.68a1bb3d00cbf.png";
-const portfolioMotion = "https://mir-s3-cdn-cf.behance.net/project_modules/source/d2a8e0231756993.68a1c2561c620.gif";
-const echoesCover = "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/4a3792233181081.69392a94bb084.jpg";
-const echoesMotion = "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f25731233181081.693422b7361d0.gif";
-
-const PROJECTS = [
-  {
-    index: "01",
-    title: "Portfolio 2026",
-    desc: "Motion design pieces — including a tap/click micro-interaction built for Inshorts.",
-    tags: ["Motion Design", "Advertising"],
-    tools: ["After Effects", "Photoshop", "Illustrator"],
-    cover: portfolioCover,
-    motion: portfolioMotion,
-    url: "https://www.behance.net/gallery/231756993/Portfolio-2026",
-  },
-  {
-    index: "02",
-    title: "Echoes",
-    desc: "A mindfulness app concept — UI in Figma, interactive transitions in After Effects.",
-    tags: ["UI/UX", "Motion"],
-    tools: ["After Effects", "Figma"],
-    cover: echoesCover,
-    motion: echoesMotion,
-    url: "https://www.behance.net/gallery/233181081/Echoes-A-Mindfullness-App-as-UI-Project",
-  },
-];
+const PROJECTS = work.projects;
 
 function Card({ project }) {
   const cardRef = useRef(null);
@@ -140,12 +115,15 @@ export default function Work() {
       <Reveal>
         <div className="mb-10 flex items-end justify-between md:mb-16">
           <h2 className="font-display text-6xl uppercase leading-none text-paper md:text-8xl">
-            Selected
-            <br />
-            Work
+            {work.titleLines.map((line, i) => (
+              <span key={i}>
+                {i > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </h2>
           <p className="hidden font-grotesk text-xs tracking-[0.3em] text-muted md:block">
-            HOVER TO PREVIEW IN MOTION
+            {work.hint}
           </p>
         </div>
       </Reveal>

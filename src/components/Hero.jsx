@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "../lib/gsap";
 import { scrollToSection } from "../lib/scroll";
+import { site, hero } from "../content";
 
-const LINES = [
-  { text: "HARSH", style: "solid", depth: 26 },
-  { text: "KUMAR", style: "stroke", depth: 48 },
-  { text: "SINGH", style: "solid", depth: 70 },
-];
+const LINES = site.nameLines;
 
 function Chars({ text, lineIndex, ready }) {
   return (
@@ -103,7 +100,7 @@ export default function Hero({ ready }) {
     >
       {/* faint index marks */}
       <p className="pointer-events-none absolute right-6 top-24 hidden font-grotesk text-xs tracking-[0.3em] text-muted md:block md:right-12">
-        FOLIO — 2026
+        {site.folioMark}
       </p>
 
       <h1 className="font-display uppercase leading-[0.85] tracking-tight">
@@ -124,10 +121,10 @@ export default function Hero({ ready }) {
       <div ref={metaRef} className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="font-grotesk text-sm font-bold uppercase tracking-[0.35em] text-lime">
-            Motion Designer
+            {hero.role}
           </p>
           <p className="mt-3 max-w-md text-base leading-relaxed text-muted md:text-lg">
-            I design movement for screens — currently at Inshorts, Noida.
+            {hero.tagline}
           </p>
         </div>
         <button
