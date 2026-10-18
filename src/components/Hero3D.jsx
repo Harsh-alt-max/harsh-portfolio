@@ -58,51 +58,12 @@ function Particles({ count = 1100 }) {
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.055} vertexColors sizeAttenuation transparent opacity={0.85} depthWrite={false} />
+      <pointsMaterial size={0.05} vertexColors sizeAttenuation transparent opacity={0.5} depthWrite={false} />
     </points>
   );
 }
 
-function Floaters() {
-  const g1 = useRef();
-  const g2 = useRef();
-  const g3 = useRef();
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
-    if (g1.current) {
-      g1.current.rotation.x = t * 0.12;
-      g1.current.rotation.y = t * 0.16;
-      g1.current.position.y = Math.sin(t * 0.5) * 0.5 + 1;
-    }
-    if (g2.current) {
-      g2.current.rotation.x = -t * 0.1;
-      g2.current.rotation.z = t * 0.14;
-      g2.current.position.y = Math.cos(t * 0.4) * 0.6 - 1.2;
-    }
-    if (g3.current) {
-      g3.current.rotation.y = t * 0.2;
-      g3.current.position.y = Math.sin(t * 0.6 + 2) * 0.4 + 2.4;
-    }
-  });
-  return (
-    <>
-      <mesh ref={g1} position={[5.5, 1, -5]}>
-        <icosahedronGeometry args={[1.1, 0]} />
-        <meshBasicMaterial color="#d7ff3e" wireframe transparent opacity={0.16} />
-      </mesh>
-      <mesh ref={g2} position={[-6, -1.2, -6]}>
-        <torusGeometry args={[1, 0.28, 12, 28]} />
-        <meshBasicMaterial color="#8f8f96" wireframe transparent opacity={0.14} />
-      </mesh>
-      <mesh ref={g3} position={[-4.5, 2.4, -7]}>
-        <octahedronGeometry args={[0.8, 0]} />
-        <meshBasicMaterial color="#d7ff3e" wireframe transparent opacity={0.12} />
-      </mesh>
-    </>
-  );
-}
-
-/** Full-hero 3D backdrop: undulating particle wave field + floating wireframes, mouse-reactive. */
+/** Full-hero 3D backdrop: a quiet undulating particle field, mouse-reactive. */
 export default function Hero3D() {
   const coarse = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
   const [visible, setVisible] = useState(true);
@@ -131,8 +92,7 @@ export default function Hero3D() {
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       >
         <fog attach="fog" args={["#0b0b0c", 9, 22]} />
-        <Particles count={coarse ? 500 : 1100} />
-        <Floaters />
+        <Particles count={coarse ? 350 : 700} />
       </Canvas>
       {/* vignette to keep type readable */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,#0b0b0c_92%)]" />

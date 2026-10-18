@@ -34,41 +34,28 @@ export const marquee = {
 // (Send your own character file and he'll swap in for the built-in one.)
 export const guide = {
   name: "Pixel",
-  // Mascot look — tweak the hex colors anytime, no 3D code needed.
-  // skin: skin tone · hair: hair color · hairStyle: reserved ("wavy" for now)
-  // outfit: shirt · pants: trousers · accent: collar + shoes · earbuds: ear buds
-  mascot: {
-    skin: "#9c6a47",
-    hair: "#141316",
-    hairStyle: "wavy",
-    outfit: "#232a3a",
-    pants: "#17171b",
-    accent: "#d7ff3e",
-    earbuds: "#101014",
+  // Orb look — tweak the hex colors anytime, no 3D code needed.
+  // ring: thin outer ring · dot: face circle · eye: eyes · glow: soft halo
+  orb: {
+    ring: "#d7ff3e",
+    dot: "#ece9df",
+    eye: "#16130e",
+    glow: "#d7ff3e",
   },
   messages: {
-    top: "Hey — I'm Pixel, Harsh's 3D buddy. Scroll, I'll show you around.",
-    work: "The work section. 4 projects dropping soon — the good stuff.",
-    sculpture: "A little form study. Distortion is a design tool too.",
-    playground: "Easing curves. This is my love language.",
+    top: "Hey — I'm Pixel. Scroll, and I'll show you around.",
+    work: "Selected work — four projects, more dropping soon.",
     about: "Self-taught. Motion-obsessed. That's the whole story.",
     contact: "Like what you see? Let's make something move.",
   },
-  // shown when you click him
+  // shown when you click it
   tips: [
     "Pro tip: hover the work cards — they move.",
-    "The easing playground uses real GSAP math. Try Elastic.",
     "Harsh animates UI at Inshorts — millions see it daily.",
     "This whole site rebuilds itself when Harsh edits one file.",
     "Click me again. I don't mind.",
     "Motion design rule #1: everything eases. Nothing teleports.",
   ],
-};
-
-// interstitial 3D moment between Work and Playground
-export const sculpture = {
-  kicker: "Form study",
-  caption: "Distortion as a design tool — drag through the scroll, watch it breathe.",
 };
 
 export const work = {
@@ -126,14 +113,8 @@ export const work = {
   ],
 };
 
-export const playground = {
-  kicker: "02 — Playground",
-  titleLines: ["Easing", "Playground"],
-  desc: "Motion is in the details. Pick a curve — the same math behind every animation on this page — and watch it play.",
-};
-
 export const about = {
-  kicker: "03 — About",
+  kicker: "02 — About",
   titleLines: ["Behind", "the motion"],
   intro:
     "Visual storyteller and motion designer. I blend media, design and motion to turn ideas into stories — with an eye for minimalism.",
@@ -143,7 +124,7 @@ export const about = {
 };
 
 export const contact = {
-  kicker: "04 — Contact",
+  kicker: "03 — Contact",
   titleA: "Let's make",
   titleB: "something",
   titleAccent: "move.",

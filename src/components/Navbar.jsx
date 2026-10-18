@@ -4,7 +4,6 @@ import { useMagnetic } from "../hooks/useMagnetic";
 
 const LINKS = [
   { label: "Work", target: "#work" },
-  { label: "Playground", target: "#playground" },
   { label: "About", target: "#about" },
   { label: "Contact", target: "#contact" },
 ];
