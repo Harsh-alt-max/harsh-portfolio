@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "../lib/gsap";
 import { scrollToSection } from "../lib/scroll";
 import { site, hero } from "../content";
+import Hero3D from "./Hero3D";
 
 const LINES = site.nameLines;
 
@@ -98,6 +99,7 @@ export default function Hero({ ready }) {
       ref={rootRef}
       className="relative flex min-h-svh flex-col justify-end overflow-hidden px-6 pb-10 pt-28 md:px-12"
     >
+      <Hero3D />
       {/* faint index marks */}
       <p className="pointer-events-none absolute right-6 top-24 hidden font-grotesk text-xs tracking-[0.3em] text-muted md:block md:right-12">
         {site.folioMark}

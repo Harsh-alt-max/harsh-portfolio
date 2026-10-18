@@ -10,12 +10,26 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import Work from "./components/Work";
+import ScrollSculpture from "./components/ScrollSculpture";
 import Playground from "./components/Playground";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Guide from "./components/Guide";
+import { guide } from "./content";
+
+const GUIDE_STOPS = [
+  { id: "#top", mood: "point", msg: guide.messages.top },
+  { id: "#work", mood: "wave", msg: guide.messages.work },
+  { id: "#sculpture", mood: "idle", msg: guide.messages.sculpture },
+  { id: "#playground", mood: "idle", msg: guide.messages.playground },
+  { id: "#about", mood: "idle", msg: guide.messages.about },
+  { id: "#contact", mood: "celebrate", msg: guide.messages.contact },
+];
 
 export default function App() {
   const [ready, setReady] = useState(false);
+  const [guideMood, setGuideMood] = useState("point");
+  const [guideMsg, setGuideMsg] = useState(guide.messages.top);
 
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
@@ -46,16 +60,37 @@ export default function App() {
     }, 400);
   };
 
+  // the 3D guide reacts to whichever section is on screen
+  useEffect(() => {
+    if (!ready) return;
+    const triggers = GUIDE_STOPS.map(({ id, mood, msg }) =>
+      ScrollTrigger.create({
+        trigger: id,
+        start: "top 55%",
+        end: "bottom 55%",
+        onToggle: (self) => {
+          if (self.isActive) {
+            setGuideMood(mood);
+            setGuideMsg(msg);
+          }
+        },
+      })
+    );
+    return () => triggers.forEach((t) => t.kill());
+  }, [ready]);
+
   return (
     <div className="grain min-h-svh bg-ink text-paper">
       <Cursor />
       <ScrollProgress />
       {!ready && <Preloader onDone={handleLoaded} />}
+      <Guide mood={guideMood} message={guideMsg} active={ready} />
       <Navbar />
       <main>
         <Hero ready={ready} />
         <Marquee />
         <Work />
+        <ScrollSculpture />
         <Playground />
         <About />
         <Contact />

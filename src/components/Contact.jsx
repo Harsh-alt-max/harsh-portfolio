@@ -1,8 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "../lib/gsap";
 import { useMagnetic } from "../hooks/useMagnetic";
 import Reveal from "./Reveal";
 import { contact, site } from "../content";
+
+/** Live clock for Asia/Kolkata — updates every second, cheap. */
+function NoidaTime() {
+  const [now, setNow] = useState("");
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat("en-IN", {
+      timeZone: "Asia/Kolkata",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+    const tick = () => setNow(fmt.format(new Date()));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span className="tabular-nums">
+      {contact.timeNote} — {now}
+    </span>
+  );
+}
 
 export default function Contact() {
   const btnRef = useMagnetic(0.45);
@@ -60,18 +83,29 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="mt-20 flex items-center justify-between border-t border-line pt-6 font-grotesk text-xs uppercase tracking-[0.25em] text-muted">
-        <span>{contact.copyright}</span>
+      <div className="mt-20 flex flex-col gap-4 border-t border-line pt-6 font-grotesk text-xs uppercase tracking-[0.25em] text-muted md:flex-row md:items-center md:justify-between">
+        <span className="flex items-center gap-2">
+          <span>{contact.copyright}</span>
+          <span className="text-line">/</span>
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+          </span>
+          {site.status}
+        </span>
         <span className="hidden md:inline">{contact.footerNote}</span>
-        <a
-          href={site.behanceUrl}
-          target="_blank"
-          rel="noreferrer"
-          data-hover
-          className="transition-colors duration-300 hover:text-lime"
-        >
-          Behance ↗
-        </a>
+        <span className="flex items-center gap-6">
+          <NoidaTime />
+          <a
+            href={site.behanceUrl}
+            target="_blank"
+            rel="noreferrer"
+            data-hover
+            className="transition-colors duration-300 hover:text-lime"
+          >
+            Behance ↗
+          </a>
+        </span>
       </div>
     </footer>
   );
