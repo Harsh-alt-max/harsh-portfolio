@@ -124,11 +124,23 @@ function Mascot({ moodRef }) {
         <sphereGeometry args={[0.5, 40, 40]} />
         <meshStandardMaterial color={M.skin} roughness={0.55} />
       </mesh>
-      {/* hair cap */}
-      <mesh position={[0, 0.57, -0.03]}>
+      {/* hair cap — tall and wavy */}
+      <mesh position={[0, 0.62, -0.05]} scale={[1.04, 1.14, 1.04]}>
         <sphereGeometry args={[0.56, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.52]} />
         <meshStandardMaterial color={M.hair} roughness={0.7} />
       </mesh>
+      {/* wavy fringe tufts swept up */}
+      {[
+        [-0.17, 1.08, 0.3, 0.13],
+        [0.04, 1.14, 0.28, 0.15],
+        [0.24, 1.06, 0.22, 0.11],
+        [-0.3, 0.98, 0.14, 0.1],
+      ].map(([x, y, z, r], i) => (
+        <mesh key={i} position={[x, y, z]}>
+          <sphereGeometry args={[r, 14, 14]} />
+          <meshStandardMaterial color={M.hair} roughness={0.7} />
+        </mesh>
+      ))}
       {/* eyes */}
       {[-0.185, 0.185].map((x, i) => (
         <group key={x} position={[x, 0.6, 0.4]}>
@@ -151,15 +163,28 @@ function Mascot({ moodRef }) {
         <torusGeometry args={[0.085, 0.02, 8, 20, Math.PI]} />
         <meshBasicMaterial color="#2a201a" />
       </mesh>
-      {/* headphones — the motion-designer touch */}
-      <mesh position={[0, 0.62, -0.02]}>
-        <torusGeometry args={[0.58, 0.055, 10, 24, Math.PI]} />
-        <meshStandardMaterial color={M.accent} roughness={0.4} emissive={M.accent} emissiveIntensity={0.25} />
+      {/* mustache */}
+      <mesh position={[0, 0.455, 0.465]} scale={[1.7, 0.55, 0.6]}>
+        <sphereGeometry args={[0.045, 12, 12]} />
+        <meshStandardMaterial color={M.hair} roughness={0.7} />
       </mesh>
-      {[-0.55, 0.55].map((x) => (
-        <mesh key={x} position={[x, 0.55, -0.02]} rotation={[0, 0, Math.PI / 2]}>
-          <cylinderGeometry args={[0.13, 0.13, 0.1, 20]} />
-          <meshStandardMaterial color={M.accent} roughness={0.4} />
+      {/* chin beard */}
+      <mesh position={[0, 0.3, 0.4]} rotation={[-0.35, 0, Math.PI]}>
+        <torusGeometry args={[0.11, 0.045, 8, 20, Math.PI]} />
+        <meshStandardMaterial color={M.hair} roughness={0.7} />
+      </mesh>
+      {/* jaw sideburns */}
+      {[-0.36, 0.36].map((x) => (
+        <mesh key={x} position={[x, 0.45, 0.28]} scale={[0.55, 1.1, 0.7]}>
+          <sphereGeometry args={[0.1, 12, 12]} />
+          <meshStandardMaterial color={M.hair} roughness={0.7} />
+        </mesh>
+      ))}
+      {/* earbuds — like his */}
+      {[-0.5, 0.5].map((x) => (
+        <mesh key={x} position={[x, 0.55, 0.06]}>
+          <sphereGeometry args={[0.09, 14, 14]} />
+          <meshStandardMaterial color={M.earbuds} roughness={0.35} />
         </mesh>
       ))}
 

@@ -35,15 +35,16 @@ export const marquee = {
 export const guide = {
   name: "Pixel",
   // Mascot look — tweak the hex colors anytime, no 3D code needed.
-  // skin: skin tone · hair: hair color · hairStyle: reserved ("crop" for now)
-  // outfit: tee · pants: trousers · accent: headphones, collar, shoes
+  // skin: skin tone · hair: hair color · hairStyle: reserved ("wavy" for now)
+  // outfit: shirt · pants: trousers · accent: collar + shoes · earbuds: ear buds
   mascot: {
-    skin: "#a9714b",
-    hair: "#17171c",
-    hairStyle: "crop",
-    outfit: "#26262e",
+    skin: "#9c6a47",
+    hair: "#141316",
+    hairStyle: "wavy",
+    outfit: "#232a3a",
     pants: "#17171b",
     accent: "#d7ff3e",
+    earbuds: "#101014",
   },
   messages: {
     top: "Hey — I'm Pixel, Harsh's 3D buddy. Scroll, I'll show you around.",
