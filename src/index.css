@@ -4,6 +4,7 @@
   --font-display: "Anton", sans-serif;
   --font-sans: "Inter", sans-serif;
   --font-grotesk: "Space Grotesk", sans-serif;
+  --font-serifit: "Instrument Serif", serif;
 
   --color-ink: #0b0b0c;
   --color-ink-soft: #141416;
@@ -67,6 +68,14 @@ body {
 }
 .animate-marquee {
   animation: marquee-x 22s linear infinite;
+}
+
+/* 3D guide speech bubble */
+.guide-bubble {
+  background: rgba(20, 20, 22, 0.92);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
 }
 
 /* film-grain overlay */
