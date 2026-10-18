@@ -10,20 +10,16 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import Work from "./components/Work";
-import ScrollSculpture from "./components/ScrollSculpture";
-import Playground from "./components/Playground";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Guide from "./components/Guide";
 import { guide } from "./content";
 
 const GUIDE_STOPS = [
-  { id: "#top", mood: "point", msg: guide.messages.top },
-  { id: "#work", mood: "wave", msg: guide.messages.work },
-  { id: "#sculpture", mood: "idle", msg: guide.messages.sculpture },
-  { id: "#playground", mood: "idle", msg: guide.messages.playground },
+  { id: "#top", mood: "idle", msg: guide.messages.top },
+  { id: "#work", mood: "idle", msg: guide.messages.work },
   { id: "#about", mood: "idle", msg: guide.messages.about },
-  { id: "#contact", mood: "celebrate", msg: guide.messages.contact },
+  { id: "#contact", mood: "idle", msg: guide.messages.contact },
 ];
 
 export default function App() {
@@ -90,8 +86,6 @@ export default function App() {
         <Hero ready={ready} />
         <Marquee />
         <Work />
-        <ScrollSculpture />
-        <Playground />
         <About />
         <Contact />
       </main>
